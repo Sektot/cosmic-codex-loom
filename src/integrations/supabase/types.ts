@@ -14,7 +14,105 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      publication_connections: {
+        Row: {
+          connection_type: string | null
+          created_at: string | null
+          id: string
+          source_publication_id: string | null
+          strength: number | null
+          target_publication_id: string | null
+        }
+        Insert: {
+          connection_type?: string | null
+          created_at?: string | null
+          id?: string
+          source_publication_id?: string | null
+          strength?: number | null
+          target_publication_id?: string | null
+        }
+        Update: {
+          connection_type?: string | null
+          created_at?: string | null
+          id?: string
+          source_publication_id?: string | null
+          strength?: number | null
+          target_publication_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "publication_connections_source_publication_id_fkey"
+            columns: ["source_publication_id"]
+            isOneToOne: false
+            referencedRelation: "publications"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "publication_connections_target_publication_id_fkey"
+            columns: ["target_publication_id"]
+            isOneToOne: false
+            referencedRelation: "publications"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      publications: {
+        Row: {
+          abstract: string | null
+          authors: string[] | null
+          created_at: string | null
+          doi: string | null
+          experiment_type: string | null
+          findings: string | null
+          id: string
+          keywords: string[] | null
+          nasa_task_book_url: string | null
+          organisms: string[] | null
+          osdr_url: string | null
+          publication_url: string | null
+          research_area: string | null
+          title: string
+          updated_at: string | null
+          year: number | null
+        }
+        Insert: {
+          abstract?: string | null
+          authors?: string[] | null
+          created_at?: string | null
+          doi?: string | null
+          experiment_type?: string | null
+          findings?: string | null
+          id?: string
+          keywords?: string[] | null
+          nasa_task_book_url?: string | null
+          organisms?: string[] | null
+          osdr_url?: string | null
+          publication_url?: string | null
+          research_area?: string | null
+          title: string
+          updated_at?: string | null
+          year?: number | null
+        }
+        Update: {
+          abstract?: string | null
+          authors?: string[] | null
+          created_at?: string | null
+          doi?: string | null
+          experiment_type?: string | null
+          findings?: string | null
+          id?: string
+          keywords?: string[] | null
+          nasa_task_book_url?: string | null
+          organisms?: string[] | null
+          osdr_url?: string | null
+          publication_url?: string | null
+          research_area?: string | null
+          title?: string
+          updated_at?: string | null
+          year?: number | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
