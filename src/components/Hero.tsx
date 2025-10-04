@@ -1,12 +1,15 @@
 import { Brain, Database, Network } from "lucide-react";
 import { SearchBar } from "./SearchBar";
 import heroBg from "@/assets/hero-bg.jpg";
+import { useNavigate } from "react-router-dom";
 
 interface HeroProps {
   onSearch: (query: string) => void;
 }
 
 export const Hero = ({ onSearch }: HeroProps) => {
+  const navigate = useNavigate();
+  
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background image */}
@@ -46,12 +49,15 @@ export const Hero = ({ onSearch }: HeroProps) => {
 
           {/* Feature badges */}
           <div className="flex flex-wrap gap-4 justify-center mt-8">
-            <div className="circuit-frame px-6 py-3 bg-card/50 backdrop-blur-sm">
+            <button 
+              onClick={() => navigate("/assistant")}
+              className="circuit-frame px-6 py-3 bg-card/50 backdrop-blur-sm hover:bg-card/80 transition-all cursor-pointer"
+            >
               <div className="flex items-center gap-2">
                 <Brain className="w-5 h-5 text-primary" />
                 <span className="font-mono text-sm">AI Analysis</span>
               </div>
-            </div>
+            </button>
             <div className="circuit-frame px-6 py-3 bg-card/50 backdrop-blur-sm">
               <div className="flex items-center gap-2">
                 <Database className="w-5 h-5 text-primary" />
