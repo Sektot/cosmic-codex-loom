@@ -3,6 +3,7 @@ import { Send, Loader2 } from "lucide-react";
 import { NecronButton } from "./NecronButton";
 import robotAvatar from "@/assets/robot-avatar.png";
 import { toast } from "sonner";
+import ReactMarkdown from "react-markdown";
 
 interface Message {
   role: "user" | "assistant";
@@ -141,13 +142,31 @@ export const AIChat = () => {
             )}
             
             <div
-              className={`max-w-[80%] px-4 py-3 font-mono text-sm ${
+              className={`max-w-[80%] px-5 py-4 rounded-lg ${
                 msg.role === "user"
                   ? "bg-primary text-primary-foreground ml-auto"
                   : "bg-muted text-foreground"
               }`}
             >
-              {msg.content}
+              <div className="prose prose-sm dark:prose-invert max-w-none">
+                <ReactMarkdown
+                  components={{
+                    p: ({ children }) => <p className="mb-2 last:mb-0 leading-relaxed">{children}</p>,
+                    ul: ({ children }) => <ul className="mb-2 ml-4 list-disc">{children}</ul>,
+                    ol: ({ children }) => <ol className="mb-2 ml-4 list-decimal">{children}</ol>,
+                    li: ({ children }) => <li className="mb-1">{children}</li>,
+                    code: ({ children }) => <code className="bg-background/50 px-1.5 py-0.5 rounded text-xs">{children}</code>,
+                    pre: ({ children }) => <pre className="bg-background/50 p-3 rounded my-2 overflow-x-auto">{children}</pre>,
+                    h1: ({ children }) => <h1 className="text-lg font-bold mb-2 mt-3 first:mt-0">{children}</h1>,
+                    h2: ({ children }) => <h2 className="text-base font-bold mb-2 mt-3 first:mt-0">{children}</h2>,
+                    h3: ({ children }) => <h3 className="text-sm font-bold mb-1 mt-2 first:mt-0">{children}</h3>,
+                    strong: ({ children }) => <strong className="font-bold text-primary">{children}</strong>,
+                    a: ({ children, href }) => <a href={href} className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">{children}</a>,
+                  }}
+                >
+                  {msg.content}
+                </ReactMarkdown>
+              </div>
             </div>
           </div>
         ))}

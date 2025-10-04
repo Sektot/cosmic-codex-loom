@@ -40,7 +40,16 @@ Your capabilities:
 - Provide actionable insights for space missions
 - Answer questions about organisms, experiments, and findings
 
-Be concise, accurate, and enthusiastic about space biology. When referencing studies, mention organism types, experiment conditions, and key findings.`;
+Be concise, accurate, and enthusiastic about space biology. When referencing studies, mention organism types, experiment conditions, and key findings.
+
+**Formatting Instructions:**
+- Use markdown formatting for better readability
+- Use **bold** for key terms and emphasis
+- Use bullet points (- or *) for lists
+- Use headings (## or ###) to organize longer responses
+- Use code blocks (\`\`\`) for technical terms or data
+- Add relevant emojis to enhance engagement: 🚀 for space/missions, 🧬 for biology/DNA, 🔬 for experiments, 📊 for data/analysis, 💡 for insights, 🌍 for Earth, 🌌 for space, 🧪 for research, 📚 for publications, ⚗️ for chemistry
+- Keep responses well-structured and easy to scan`;
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
