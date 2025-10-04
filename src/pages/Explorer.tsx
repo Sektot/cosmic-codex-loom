@@ -6,10 +6,12 @@ import { PublicationCard } from "@/components/PublicationCard";
 import { PublicationFilters } from "@/components/PublicationFilters";
 import { SearchBar } from "@/components/SearchBar";
 import { NecronButton } from "@/components/NecronButton";
-import { Database, Download, Loader2 } from "lucide-react";
+import { Database, Download, Loader2, Home, Brain, Network } from "lucide-react";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 const Explorer = () => {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [filters, setFilters] = useState({
     yearRange: [null, null] as [number | null, number | null],
@@ -116,6 +118,19 @@ const Explorer = () => {
             </div>
             
             <div className="flex items-center gap-4">
+              <NecronButton onClick={() => navigate("/")}>
+                <Home className="w-4 h-4 mr-2" />
+                Home
+              </NecronButton>
+              <NecronButton onClick={() => navigate("/assistant")}>
+                <Brain className="w-4 h-4 mr-2" />
+                AI Assistant
+              </NecronButton>
+              <NecronButton onClick={() => navigate("/graph")}>
+                <Network className="w-4 h-4 mr-2" />
+                Graph
+              </NecronButton>
+              
               {count !== undefined && (
                 <span className="text-sm text-muted-foreground font-mono">
                   {count} publications indexed

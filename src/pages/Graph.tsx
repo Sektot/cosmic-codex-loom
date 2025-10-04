@@ -1,8 +1,11 @@
 import { useState } from "react";
-import { Network } from "lucide-react";
+import { Network, Home, Database, Brain } from "lucide-react";
 import { KnowledgeGraph } from "@/components/KnowledgeGraph";
+import { useNavigate } from "react-router-dom";
+import { NecronButton } from "@/components/NecronButton";
 
 const Graph = () => {
+  const navigate = useNavigate();
   const [selectedPublication, setSelectedPublication] = useState<string | null>(null);
 
   return (
@@ -10,15 +13,32 @@ const Graph = () => {
       {/* Header */}
       <div className="border-b border-border bg-card/50 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center gap-3">
-            <Network className="w-6 h-6 text-primary" />
-            <div>
-              <h1 className="text-2xl font-bold font-mono glow-text">
-                Knowledge Graph
-              </h1>
-              <p className="text-sm text-muted-foreground mt-1">
-                Explore connections between NASA bioscience research
-              </p>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <Network className="w-6 h-6 text-primary" />
+              <div>
+                <h1 className="text-2xl font-bold font-mono glow-text">
+                  Knowledge Graph
+                </h1>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Explore connections between NASA bioscience research
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex items-center gap-4">
+              <NecronButton onClick={() => navigate("/")}>
+                <Home className="w-4 h-4 mr-2" />
+                Home
+              </NecronButton>
+              <NecronButton onClick={() => navigate("/explorer")}>
+                <Database className="w-4 h-4 mr-2" />
+                Explorer
+              </NecronButton>
+              <NecronButton onClick={() => navigate("/assistant")}>
+                <Brain className="w-4 h-4 mr-2" />
+                AI Assistant
+              </NecronButton>
             </div>
           </div>
         </div>

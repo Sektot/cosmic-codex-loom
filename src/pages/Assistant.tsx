@@ -1,21 +1,42 @@
-import { Brain } from "lucide-react";
+import { Brain, Home, Database, Network } from "lucide-react";
 import { AIChat } from "@/components/AIChat";
+import { useNavigate } from "react-router-dom";
+import { NecronButton } from "@/components/NecronButton";
 
 const Assistant = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
       <div className="border-b border-border bg-card/50 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center gap-3">
-            <Brain className="w-6 h-6 text-primary" />
-            <div>
-              <h1 className="text-2xl font-bold font-mono glow-text">
-                AI Research Assistant
-              </h1>
-              <p className="text-sm text-muted-foreground mt-1">
-                Ask questions about NASA space biology research
-              </p>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <Brain className="w-6 h-6 text-primary" />
+              <div>
+                <h1 className="text-2xl font-bold font-mono glow-text">
+                  AI Research Assistant
+                </h1>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Ask questions about NASA space biology research
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex items-center gap-4">
+              <NecronButton onClick={() => navigate("/")}>
+                <Home className="w-4 h-4 mr-2" />
+                Home
+              </NecronButton>
+              <NecronButton onClick={() => navigate("/explorer")}>
+                <Database className="w-4 h-4 mr-2" />
+                Explorer
+              </NecronButton>
+              <NecronButton onClick={() => navigate("/graph")}>
+                <Network className="w-4 h-4 mr-2" />
+                Graph
+              </NecronButton>
             </div>
           </div>
         </div>

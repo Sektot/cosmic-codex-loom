@@ -19,7 +19,7 @@ serve(async (req) => {
     const supabase = createClient(supabaseUrl, supabaseKey);
 
     // GitHub raw content URL for the publications
-    const githubUrl = 'https://raw.githubusercontent.com/jgalazka/SB_publications/main/SB_publications.csv';
+    const githubUrl = 'https://raw.githubusercontent.com/jgalazka/SB_publications/main/SB_publication_PMC.csv';
     
     console.log('Fetching from:', githubUrl);
     const response = await fetch(githubUrl);
